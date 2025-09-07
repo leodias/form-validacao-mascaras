@@ -43,3 +43,21 @@ form.addEventListener("submit", function(e) {
     alert("Formulário enviado com sucesso!");
 
 });
+
+// Máscara de telefone
+telefone.addEventListener("input", function(e) {
+  let valor = e.target.value.replace(/\D/g, "");
+  valor = valor.length <= 10
+    ? valor.replace(/(\d{2})(\d{4})(\d{0,4})/, "($1) $2-$3")
+    : valor.replace(/(\d{2})(\d{5})(\d{0,4})/, "($1) $2-$3");
+  e.target.value = valor;
+});
+
+// Máscara de CPF
+cpf.addEventListener("input", function(e) {
+  let valor = e.target.value.replace(/\D/g, "");
+  valor = valor.replace(/(\d{3})(\d)/, "$1.$2");
+  valor = valor.replace(/(\d{3})(\d)/, "$1.$2");
+  valor = valor.replace(/(\d{3})(\d{1,2})$/, "$1-$2");
+  e.target.value = valor;
+});
